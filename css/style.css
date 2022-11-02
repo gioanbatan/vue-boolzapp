@@ -1,0 +1,26 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: gray;
+}
+
+html {
+    font-size: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* VARIABLES */
+:root {
+    --col-white: #ffffff;
+    --col-black: #000000;
+}
+
+/* COMMON */
