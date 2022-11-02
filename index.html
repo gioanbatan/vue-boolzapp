@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> 
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-
+    
     <!-- Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
- 
+    
     <title>Boolzapp - a (not very) innovative messaging platform</title>
 </head>
 <body>
@@ -70,31 +70,52 @@
                                 <div class="search-bar-icon">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
-
+                                
                                 <label for="search-contact">Search contact</label>
-                                <input type="text" id="search-contact" v-model="">
+                                <input type="text" id="search-contact" placeholder="Cerca o inizia una nuova chat" v-model="">
                             </div>
                         </div>
                         <!-- /Search -->
-                    </header>
+                    </div>
                     <!-- /Sidebar - header -->
-                
+                    
                     <!-- Sidebar - contact list -->
                     <div class="sidebar-contact-list">
+                        <div v-for="(singleContact, contactsIndex) in contacts" class="contact-card">
+                            <img :src=`img/avatar${singleContact.avatar}.jpg` alt="">
 
+                            <div class="contact-text">
+                                <span class="contact-name">
+                                    {{ singleContact.name }}
+                                </span>
+                                
+                                <span class="contact-last-msg">
+                                    {{ singleContact.messages[(singleContact.messages.length - 1)].message}}
+                                </span>
+                            </div>
+
+                            <div class="contact-last-time">
+                                12:00
+                            </div>
+                        </div>
                     </div>
                     <!-- /Sidebar - contact list -->
-                <!-- /Sidebar -->
                 </section>
+                <!-- /Sidebar -->
                 
                 <!-- Main -->
                 <main>
                     <!-- Main - header -->
+                    <div>
+                        <div class="main-chat-header">
+                            
+                        </div>
+                    </div>
                     <!-- /Main - header -->
-                
+                    
                     <!-- Main - chat -->
                     <!-- /Main - chat -->
-                
+                    
                     <!-- Main - footer -->
                     <!-- /Main - footer -->
                 </main>
@@ -102,9 +123,9 @@
             </div>
         </div>
     </div>
-        
+    
     <!-- Data -->
-    <script src="js/data.js"></script>
+    <!-- <script src="js/data.js"></script> -->
 
     <!-- Script -->
     <script src="js/script.js"></script>

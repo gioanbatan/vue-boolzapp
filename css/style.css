@@ -34,6 +34,7 @@ input {
     --col-light-gray: #f8f8f8;
     --col-gray: #eaeaea;
     --col-dark-gray: #b1b1b1;
+    /* --col-gray: #e9ebeb; */
     --col-user-msg: #d5f9ba;
     --col-bg-notification: #8edafc;
     --col-notification-gray: #4f7485;
@@ -53,7 +54,7 @@ input {
     width: 100%;
     height: calc(100% - 40px);
     margin: 0 auto;
-    max-width: 1100px;
+    max-width: 1200px;
 
     /* DEBUG */
     background-color: var(--col-gray);
@@ -65,15 +66,18 @@ input {
     min-width: 300px;
     height: 100%;
     border-right: 1px solid var(--col-dark-gray);
+    overflow-y: scroll;
 }
 
 /* Sidebar user */
 .user-bar {
+    height: 70px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.6rem;
 }
+
 .user-identification {
     display: flex;
     align-items: center;
@@ -172,6 +176,56 @@ input {
     width: 100%;
     height: 100%;
     padding: 0 1rem;
+
+    font-size: 0.9rem;
     color: var(--col-dark-gray);
     border: none;
+}
+
+/* Sidebar Contact List */
+.contact-card {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.6rem;
+    background-color: var(--col-white);
+    border-bottom: var(--col-gray);
+}
+
+.contact-card img {
+    width: 70px;
+    height: 70px;
+    margin: 0 1rem;
+   
+    border-radius: 50%;
+}
+
+.contact-card .contact-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    height: 100%;
+    flex-grow: 1;
+}
+
+.contact-card .contact-last-msg {
+    font-size: 0.7rem;
+    padding-top: 0.5rem;
+    color: var(--col-dark-gray);
+}
+
+.contact-last-time {
+    height: 100%;
+    font-size: 0.7rem;
+    color: var(--col-dark-gray);
+}
+
+/* MAIN */
+/* Main Chat Header */
+.main-chat-header {
+    height: 70;
 }
