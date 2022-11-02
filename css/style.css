@@ -5,22 +5,124 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: gray;
-}
-
 html {
     font-size: 100%;
+    font-family: 'Lato', sans-serif;
 }
 
 img {
     max-width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* VARIABLES */
 :root {
+    /* Colors */
     --col-white: #ffffff;
     --col-black: #000000;
+    --col-bg-green: #009688;
+    --col-bg-gray: #dbdbd1;
+    --col-gray: #eaeaea;
+    --col-dark-gray: #b1b1b1;
+    --col-user-msg: #d5f9ba;
+    --col-bg-notification: #8edafc;
+    --col-notification-gray: #4f7485;
 }
 
 /* COMMON */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(var(--col-bg-green) 0% 15%, var(--col-bg-gray) 15% 100%);
+}
+
+.container {
+    width: 100%;
+    height: calc(100% - 40px);
+    margin: 0 auto;
+    max-width: 1100px;
+
+    /* DEBUG */
+    background-color: var(--col-gray);
+}
+
+/* Sidebar */
+.sidebar {
+    width: calc(100% / 3);
+    height: 100%;
+    border-right: 1px solid var(--col-dark-gray);
+}
+
+/* Sidebar user */
+.user-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+}
+.user-identification {
+    display: flex;
+    align-items: center;
+}
+
+.user-image {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.user-name {
+    padding-left: 1rem;
+}
+
+.user-commands {
+    font-size: 1.4rem;
+    color: var(--col-dark-gray);
+}
+
+.user-commands a {
+    padding-right: 1rem;
+}
+
+/* Sidebar notification */
+.notification {
+    background-color: var(--col-bg-notification);
+    padding: 1rem;
+}
+
+.notification a {
+    display: flex;
+    align-items: center;
+}
+
+.notification-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--col-white);
+    color: var(--col-bg-notification);
+    font-size: 1.3rem;
+}
+
+.notification-text {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    line-height: 1.2rem;
+}
+
+.notification-text span:nth-child(2) {
+    font-size: 0.8rem;
+    color: var(--col-notification-gray);
+    text-decoration: underline;
+}
+
+/* Sidebar Search */

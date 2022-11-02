@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> 
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -18,34 +23,76 @@
 </head>
 <body>
     <div id="app">
-        <!-- Sidebar -->
-            <!-- Sidebar - header -->
-                <!-- User -->
-                <!-- /User -->
+        <div class="wrapper">
+            <div class="container">
+                <!-- Sidebar -->
+                <section class="sidebar">
+                    <!-- Sidebar - header -->
+                    <div class="sidebar-header">
+                        <!-- User -->
+                        <div class="user-bar">
+                            <div class="user-identification">
+                                <img class="user-image" src="img/avatar_io.jpg" alt="User Avatar">
+                                <span class="user-name">Sofia</span>
+                            </div>
 
-                <!-- Notifications -->
-                <!-- /Notifications -->
-
-                <!-- Search -->
-                <!-- /Search -->
-            <!-- /Sidebar - header -->
-
-            <!-- Sidebar - contact list -->
-            <!-- /Sidebar - contact list -->
-        <!-- /Sidebar -->
-
-        <!-- Main -->
-            <!-- Main - header -->
-            <!-- /Main - header -->
-
-            <!-- Main - chat -->
-            <!-- /Main - chat -->
-
-            <!-- Main - footer -->
-            <!-- /Main - footer -->
-        <!-- /Main -->
-    </div>
+                            <div class="user-commands">
+                                <a href="">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-solid fa-message"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /User -->
+                
+                        <!-- Notifications -->
+                        <div class="notification">
+                            <a href="">
+                                <div class="notification-icon">
+                                    <i class="fa-solid fa-bell-slash"></i>
+                                </div>
+                                <div class="notification-text">
+                                    <span>Ricevi notifiche di nuovi messaggi</span>
+                                    <span>Attiva notifiche desktop</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- /Notifications -->
     
+                        <!-- Search -->
+                        <!-- /Search -->
+                    </header>
+                    <!-- /Sidebar - header -->
+                
+                    <!-- Sidebar - contact list -->
+                    <div class="sidebar-contact-list">
+
+                    </div>
+                    <!-- /Sidebar - contact list -->
+                <!-- /Sidebar -->
+                </section>
+                
+                <!-- Main -->
+                <main>
+                    <!-- Main - header -->
+                    <!-- /Main - header -->
+                
+                    <!-- Main - chat -->
+                    <!-- /Main - chat -->
+                
+                    <!-- Main - footer -->
+                    <!-- /Main - footer -->
+                </main>
+                <!-- /Main -->
+            </div>
+        </div>
+    </div>
+        
     <!-- Data -->
     <script src="js/data.js"></script>
 
