@@ -82,7 +82,7 @@
                     <!-- Sidebar - contact list -->
                     <div class="sidebar-contact-list">
                         <div v-for="(singleContact, contactIndex) in contacts" class="contact-card" @click="activeContact = contactIndex">
-                            <img :src="`img/avatar${singleContact.avatar}.jpg`" alt="singleContact.name">
+                            <img :src="`img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
 
                             <div class="contact-text">
                                 <span class="contact-name">
@@ -130,23 +130,31 @@
                     
                     <!-- Main - chat -->
                     <div class="main-chat">
+                        <!-- v-for read messages and status type and add dynamic class -->
                         <div v-for="singleMessage in contacts[activeContact].messages">
-                            <div v-if="singleMessage.status === 'sent'">
-                                <div class="chat-sent-container">
-                                    <div class="chat-sent">
-                                        {{ singleMessage.message }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div v-else-if="singleMessage.status === 'received'">
-                                <div class="chat-received-container">
-                                    <div class="chat-received">
-                                        {{ singleMessage.message }}
-                                    </div>
+                            <div :class="`chat-${singleMessage.status}-container`">
+                                <div :class="`chat-${singleMessage.status}`">
+                                    {{ singleMessage.message }}
                                 </div>
                             </div>
                         </div>
+
+                        <!-- OLD VERSION -->
+                        <!-- <div v-if="singleMessage.status === 'sent'">
+                            <div class="chat-sent-container">
+                                <div class="chat-sent">
+                                    {{ singleMessage.message }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div v-else-if="singleMessage.status === 'received'">
+                            <div class="chat-received-container">
+                                <div class="chat-received">
+                                    {{ singleMessage.message }}
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                     <!-- /Main - chat -->
                     
