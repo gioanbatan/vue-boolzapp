@@ -165,7 +165,7 @@
                         </div>
 
                         <label for="input-msg">Input message</label>
-                        <input type="text" placeholder="Scrivi un messaggio" id="input-msg" v-model="chatText">
+                        <input type="text" placeholder="Scrivi un messaggio" id="input-msg" v-model="chatText" @keyup.enter="addNewMessage">
                         
                         <div class="audio-rec">
                             <i class="fa-solid fa-microphone"></i>

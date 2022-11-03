@@ -171,6 +171,19 @@ createApp({
         }
     },
     methods: {
-
+        addNewMessage() {
+            this.chatText = this.chatText.trim();
+            console.log("Text", this.chatText, typeof(this.chatText));
+            if (this.chatText) {
+                const newMessage = {
+                    date: '10/01/2020 15:30:55',
+                    message: this.chatText,
+                    status: 'sent'
+                }
+                console.log("Active", this.activeContact);
+                console.log("CONT", this.contacts[this.activeContact].messages[1].message);
+                this.contacts[this.activeContact].messages.push(newMessage);
+            }
+        }
     }
 }).mount("#app");
