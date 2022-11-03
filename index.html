@@ -13,6 +13,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
+    <!-- Luxon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.1.0/luxon.min.js" integrity="sha512-79nhbkASdW5wurW8DtF9Vd7BEDKdTbCKkh87lW6W3tk9T4L9Bc58MzmvRzjMcFCSKpjkoRjwzrTdfOa5lkfJ5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
     
@@ -95,7 +98,7 @@
                             </div>
 
                             <div class="contact-last-time">
-                                12:00
+                                {{ singleContact.messages[(singleContact.messages.length - 1)].date.slice(-8)}}
                             </div>
                         </div>
                     </div>
@@ -111,7 +114,7 @@
 
                         <div class="chat-contact-text">
                             <span class="chat-name">{{ contacts[activeContact].name }}</span>
-                            <span class="chat-last-message">Ultimo accesso oggi alle ---mustacchio-- {{}}</span>
+                            <span class="chat-last-access">Ultimo accesso oggi alle {{ actualHour() }}</span>
                         </div>
 
                         <div class="chat-commands">
@@ -135,6 +138,7 @@
                             <div :class="`chat-${singleMessage.status}-container`">
                                 <div :class="`chat-${singleMessage.status}`">
                                     {{ singleMessage.message }}
+                                <span class="message-time">{{singleMessage.date}}</span>
                                 </div>
                             </div>
                         </div>

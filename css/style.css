@@ -275,7 +275,7 @@ main {
     flex-grow: 1;
 }
 
-.chat-last-message {
+.chat-last-access {
     font-size: 0.7rem;
     padding-top: 0.5rem;
     color: var(--col-dark-gray);
@@ -311,8 +311,8 @@ main {
     max-width: 60%;
     background-color: var(--col-chat-sent);
     color: var(--col-black);
-    margin: 1rem 3rem;
-    padding: 1rem;
+    margin: 0.7rem 3rem;
+    padding: 0.5rem;
     border-radius: 10px;
 }
 
@@ -327,9 +327,17 @@ main {
     max-width: 60%;
     background-color: var(--col-white);
     color: var(--col-black);
-    margin: 1rem 3rem;
-    padding: 1rem;
+    margin: 0.7rem 3rem;
+    padding: 0.5rem;
     border-radius: 10px;
+}
+
+.chat-received .message-time,
+.chat-sent .message-time {
+    display: block;
+    text-align: end;
+    font-size: 0.7rem;
+    color: var(--col-dark-gray);
 }
 
 /* Main Chat Footer */
@@ -360,7 +368,7 @@ main {
     flex-grow: 1;
     padding: 1rem;
     background-color: var(--col-white);
-    color: var(--col-dark-gray);
+    color: var(--col-black);
     border-radius: 5px;
     border: none;
 }

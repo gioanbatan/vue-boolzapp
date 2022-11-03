@@ -1,4 +1,5 @@
 const { createApp } = Vue;
+const dt = luxon.DateTime;
 
 createApp({
     data() {
@@ -170,10 +171,14 @@ createApp({
             ]
         }
     },
+    created() {
+        console.log("Ecchime!");
+        console.log(this.actualHour());
+    },
     methods: {
         addNewMessage() {
             this.chatText = this.chatText.trim();
-            console.log("Text", this.chatText, typeof(this.chatText));
+            console.log("Text", this.chatText, typeof(this.chatText), (this.chatText === true ? "true" : "false"));
             if (this.chatText) {
                 // Compose message object with user text and status "sent"
                 newMessage = this.composeMessage(this.chatText, 'sent');
@@ -181,16 +186,20 @@ createApp({
                 console.log("Active", this.activeContact);
                 console.log("CONT", this.contacts[this.activeContact].messages[1].message);
                 this.contacts[this.activeContact].messages.push(newMessage);
-            }
-            // Clear user text input
-            this.chatText = "";
 
-            // Auto answer after one second
-            this.addNewAnswer();
+                this.scrollToBottom();
+                // Clear user text input
+                this.chatText = "";
+                
+                // Auto answer after one second
+                this.addNewAnswer();
+
+                this.scrollToBottom();
+            }
         },
         composeMessage(messageText, statusType) {
             const message = {
-                date: '10/01/2020 15:30:55',
+                date: this.actualHour(),
                 message: messageText,
                 status: statusType,
             }
@@ -211,6 +220,15 @@ createApp({
         },
         generateRndNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1) ) + min;
+        },
+        actualHour() {
+            const now = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS)
+            return now;
+        },
+        scrollToBottom() {
+            const element = document.querySelector(".main-chat");
+            console.log("scroll", element);
+            element.scrollIntoView(false);
         }
     }
 }).mount("#app");
