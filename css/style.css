@@ -30,7 +30,8 @@ input {
     --col-white: #ffffff;
     --col-black: #000000;
     --col-bg-green: #009688;
-    --col-bg-gray: #dbdbd1;
+    --col-bg-gray-1: #dddbd1;
+    --col-bg-gray-2: #d2dbdb;
     --col-light-gray: #f8f8f8;
     --col-gray: #eaeaea;
     --col-dark-gray: #b1b1b1;
@@ -48,7 +49,7 @@ input {
     align-items: center;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(var(--col-bg-green) 0% 15%, var(--col-bg-gray) 15% 100%);
+    background-image: linear-gradient(var(--col-bg-green) 0% 15%, var(--col-bg-gray-1) 15%, var(--col-bg-gray-2));
 }
 
 .container {
@@ -110,6 +111,7 @@ input {
 }
 
 .notification a {
+    height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -117,7 +119,6 @@ input {
 }
 
 .notification-icon {
-    flex-basis: 50px;
     width: 50px;
     height: 50px;
     line-height: 50px;
@@ -129,6 +130,7 @@ input {
 }
 
 .notification-text {
+    width: calc(100% - 50px);
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
@@ -165,12 +167,6 @@ input {
     border-right: 3px solid var(--col-light-gray);
 }
 
-.search-bar-input {
-    width: 70%;
-
-    text-align: center;
-}
-
 .search-bar label {
     display: none;
 }
@@ -200,7 +196,14 @@ input {
 
     padding: 0.6rem;
     background-color: var(--col-white);
+}
+
+.contact-card:not(:last-child) {
     border-bottom: 1px solid var(--col-gray);
+}
+
+.contact-card:hover {
+    background-color: var(--col-light-gray);
 }
 
 .contact-card img {
@@ -300,7 +303,7 @@ main {
 }
 
 .chat-sent {
-    min-width: 30%;
+    min-width: 300px;
     max-width: 60%;
     background-color: var(--col-chat-sent);
     color: var(--col-black);
@@ -316,7 +319,7 @@ main {
 }
 
 .chat-received {
-    min-width: 30%;
+    min-width: 300px;
     max-width: 60%;
     background-color: var(--col-white);
     color: var(--col-black);
@@ -327,8 +330,33 @@ main {
 
 /* Main Chat Footer */
 .main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 70px;
     background-color: var(--col-chat-input);
     padding: 0.6rem;
+}
+
+.main-footer .emoticon,
+.main-footer .audio-rec {
+    font-size: 1.4rem;
+    padding: 0 1.5rem;
+    color: var(--col-dark-gray);
+}
+
+.main-footer label {
+    display: none;
+}
+
+.main-footer input {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    padding: 1rem;
+    background-color: var(--col-white);
+    color: var(--col-dark-gray);
+    border-radius: 5px;
+    border: none;
 }

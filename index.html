@@ -81,8 +81,8 @@
                     
                     <!-- Sidebar - contact list -->
                     <div class="sidebar-contact-list">
-                        <div v-for="(singleContact, contactsIndex) in contacts" class="contact-card">
-                            <img :src=`img/avatar${singleContact.avatar}.jpg` alt="">
+                        <div v-for="(singleContact, contactIndex) in contacts" class="contact-card" @click="activeContact = contactIndex">
+                            <img :src="`img/avatar${singleContact.avatar}.jpg`" alt="singleContact.name">
 
                             <div class="contact-text">
                                 <span class="contact-name">
@@ -107,11 +107,11 @@
                 <main>
                     <!-- Main - header -->
                     <div class="main-header">
-                        <img class="chat-contact-image" src="img/avatar_io.jpg" alt="User Avatar">
+                        <img class="chat-contact-image" :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="User Avatar">
 
                         <div class="chat-contact-text">
-                            <span class="chat-name">CONTACT</span>
-                            <span class="chat-last-message">Ultimo messaggio</span>
+                            <span class="chat-name">{{ contacts[activeContact].name }}</span>
+                            <span class="chat-last-message">Ultimo accesso oggi alle ---mustacchio-- {{}}</span>
                         </div>
 
                         <div class="chat-commands">
@@ -130,15 +130,21 @@
                     
                     <!-- Main - chat -->
                     <div class="main-chat">
-                        <div class="chat-sent-container">
-                            <div class="chat-sent">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut necessitatibus dolores blanditiis repellat sequi laudantium facilis nobis dolor quis nemo dicta animi molestias deserunt, temporibus culpa iusto ea quae sed.
+                        <div v-for="singleMessage in contacts[activeContact].messages">
+                            <div v-if="singleMessage.status === 'sent'">
+                                <div class="chat-sent-container">
+                                    <div class="chat-sent">
+                                        {{ singleMessage.message }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="chat-received-container">
-                            <div class="chat-received">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam pariatur enim a! Omnis autem harum aut perferendis accusamus, voluptatibus quas esse eum iusto, nemo voluptatum nobis fugiat similique repudiandae molestiae?
+                            <div v-else-if="singleMessage.status === 'received'">
+                                <div class="chat-received-container">
+                                    <div class="chat-received">
+                                        {{ singleMessage.message }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -146,7 +152,16 @@
                     
                     <!-- Main - footer -->
                     <div class="main-footer">
+                        <div class="emoticon">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+
+                        <label for="input-msg">Input message</label>
+                        <input type="text" placeholder="Scrivi un messaggio" id="input-msg" v-model="chatText">
                         
+                        <div class="audio-rec">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
                     </div>
                     <!-- /Main - footer -->
                 </main>
