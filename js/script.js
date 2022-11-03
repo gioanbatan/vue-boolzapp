@@ -175,15 +175,42 @@ createApp({
             this.chatText = this.chatText.trim();
             console.log("Text", this.chatText, typeof(this.chatText));
             if (this.chatText) {
-                const newMessage = {
-                    date: '10/01/2020 15:30:55',
-                    message: this.chatText,
-                    status: 'sent'
-                }
+                // Compose message object with user text and status "sent"
+                newMessage = this.composeMessage(this.chatText, 'sent');
+
                 console.log("Active", this.activeContact);
                 console.log("CONT", this.contacts[this.activeContact].messages[1].message);
                 this.contacts[this.activeContact].messages.push(newMessage);
             }
+            // Clear user text input
+            this.chatText = "";
+
+            // Auto answer after one second
+            this.addNewAnswer();
+        },
+        composeMessage(messageText, statusType) {
+            const message = {
+                date: '10/01/2020 15:30:55',
+                message: messageText,
+                status: statusType,
+            }
+            return message;
+        },
+        addNewAnswer() {
+            const timeAnswer = setTimeout( () => {
+                console.log("voilà");
+                // Answer array
+                const textMessage = ["Si!", "No!", "Forse", "Mah, io non saprei...", "Ma che problema hai?", "AHAHAHAHhahahah!!!", "No, no, neanche per idea!", "Eh, vabbé!", "Grande!", "Noooooo!"];
+                // Generate a random number
+                const answerNumber = this.generateRndNumber(0, textMessage.length - 1);
+                // Insert a random text in message
+                const answer = this.composeMessage (textMessage[answerNumber], 'received');
+
+                this.contacts[this.activeContact].messages.push(answer);
+                }, 1000);
+        },
+        generateRndNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
         }
     }
 }).mount("#app");
