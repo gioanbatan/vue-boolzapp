@@ -198,6 +198,10 @@ input {
     background-color: var(--col-white);
 }
 
+.active-contact-card {
+    background-color: var(--col-light-gray);
+}
+
 .contact-card:not(:last-child) {
     border-bottom: 1px solid var(--col-gray);
 }

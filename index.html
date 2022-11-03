@@ -81,7 +81,7 @@
                     
                     <!-- Sidebar - contact list -->
                     <div class="sidebar-contact-list">
-                        <div v-for="(singleContact, contactIndex) in contacts" class="contact-card" @click="activeContact = contactIndex">
+                        <div v-for="(singleContact, contactIndex) in contacts" class="contact-card" :class="contactIndex === activeContact ? 'active-contact-card' : ''" @click="activeContact = contactIndex">
                             <img :src="`img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
 
                             <div class="contact-text">
