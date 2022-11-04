@@ -254,6 +254,9 @@ createApp({
                     element.visible = true;
                 })
             }
+        },
+        messageOptions() {
+            console.log("message clicked");
         }
     }
 }).mount("#app");

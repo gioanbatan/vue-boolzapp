@@ -140,30 +140,20 @@
                     <div class="main-chat">
                         <!-- v-for read messages and status type and add dynamic class -->
                         <div v-for="singleMessage in contacts[activeContact].messages">
-                            <div :class="`chat-${singleMessage.status}-container`">
+                            <div :class="`chat-${singleMessage.status}-container`" @click="messageOptions">
                                 <div :class="`chat-${singleMessage.status}`">
                                     {{ singleMessage.message }}
-                                <span class="message-time">{{singleMessage.date}}</span>
+                                    <span class="message-time">{{singleMessage.date}}</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- OLD VERSION -->
-                        <!-- <div v-if="singleMessage.status === 'sent'">
-                            <div class="chat-sent-container">
-                                <div class="chat-sent">
-                                    {{ singleMessage.message }}
-                                </div>
-                            </div>
+                        <div class="message-popup-options">
+                            <ul>
+                                <li>Prova 1</li>
+                                <li>Prova 2</li>
+                            </ul>
                         </div>
-
-                        <div v-else-if="singleMessage.status === 'received'">
-                            <div class="chat-received-container">
-                                <div class="chat-received">
-                                    {{ singleMessage.message }}
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <!-- /Main - chat -->
                     

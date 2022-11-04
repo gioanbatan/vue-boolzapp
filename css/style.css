@@ -19,6 +19,10 @@ a {
     color: inherit;
 }
 
+li {
+    list-style-type: none;
+}
+
 input {
     font-size: 100%;
     font-family: 'Lato', sans-serif;
@@ -197,6 +201,7 @@ input {
 
     padding: 0.6rem;
     background-color: var(--col-white);
+    cursor: pointer;
 }
 
 .active-contact-card {
@@ -298,6 +303,7 @@ main {
 
 /* .main-chat-window */
 .main-chat {
+    position: relative;
     width: 100%;
     height: 10%;
     flex-grow: 1;
@@ -344,6 +350,27 @@ main {
     text-align: end;
     font-size: 0.7rem;
     color: var(--col-dark-gray);
+}
+
+.message-popup-options {
+    position: absolute;
+    min-width: 200px;
+    min-height: 70px;
+    padding: 1rem;
+
+    background-color: var(--col-white);
+    color: var(--col-dark-gray);
+    border-radius: 5px;
+    box-shadow: 0 0 3px 3px var(--col-dark-gray);
+}
+
+.message-popup-options li {
+    padding: 0.4rem;
+}
+
+.message-popup-options li:hover {
+    color: var(--col-black);
+    cursor: pointer;
 }
 
 /* Main Chat Footer */
