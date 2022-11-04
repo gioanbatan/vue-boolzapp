@@ -4,7 +4,8 @@ const dt = luxon.DateTime;
 createApp({
     data() {
         return {
-            popup: false,
+            popupToReset: false,
+            messageSelected: null,
             allHidden: false,
             searchContact: "",
             activeContact: 0,
@@ -262,7 +263,9 @@ createApp({
         },
         messageOptions(index, status) {
             console.log("message clicked", index, status);
-            //SE l'utente clicca il messaggio
+            
+            //SE l'utente clicca il messaggio rende la variabile messageSelected dello stesso numero dell'indice
+            this.messageSelected = index;
                 // Viene prelevato l'indice del messaggio cliccato
                 // SE è presente una altro popup lo chiude
                 // Aggiunge il popup all'interndo dell div del messaggio
@@ -271,8 +274,15 @@ createApp({
                 // SE l'utente clicca su una voce il popup si chiude
                 // SE l'utente clicca fuori dal popup, il popup si chiude
                 // SE l'utente clicca sulla voce cancella messaggio viene tolto dall'array messaggi quello con l'indice prelevato
-
-
+                this.popupToReset = false;
+        },
+        resetPopup() {
+            console.log("reset popup");
+            if (this.popupToReset) {
+                this.messageSelected = null;
+            } else {
+                this.popupToReset = true;
+            }
         }
     }
 }).mount("#app");

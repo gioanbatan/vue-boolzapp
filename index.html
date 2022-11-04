@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="app">
-        <div class="wrapper">
+        <div class="wrapper"  @click="resetPopup">
             <div class="container">
                 <!-- Sidebar -->
                 <section class="sidebar">
@@ -145,16 +145,17 @@
                                 <div :class="`chat-${singleMessage.status}`" @click="messageOptions(indexMessage,singleMessage.status)">
                                     {{ singleMessage.message }}
                                     <span class="message-time">{{singleMessage.date}}</span>
+                                    
+                                    <div v-if="indexMessage === messageSelected" class="message-popup-options">
+                                        <ul>
+                                            <li>Prova 1</li>
+                                            <li>Prova 2</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div v-if="popup" class="message-popup-options">
-                            <ul>
-                                <li>Prova 1</li>
-                                <li>Prova 2</li>
-                            </ul>
-                        </div>
                     </div>
                     <!-- /Main - chat -->
                     
