@@ -75,7 +75,7 @@
                                 </div>
                                 
                                 <label for="search-contact">Search contact</label>
-                                <input type="text" id="search-contact" placeholder="Cerca o inizia una nuova chat" v-model="">
+                                <input type="text" id="search-contact" placeholder="Cerca o inizia una nuova chat" v-model="searchContact" @keyup="showFoundContacts">
                             </div>
                         </div>
                         <!-- /Search -->
@@ -84,22 +84,27 @@
                     
                     <!-- Sidebar - contact list -->
                     <div class="sidebar-contact-list">
-                        <div v-for="(singleContact, contactIndex) in contacts" class="contact-card" :class="contactIndex === activeContact ? 'active-contact-card' : ''" @click="activeContact = contactIndex">
-                            <img :src="`img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
-
-                            <div class="contact-text">
-                                <span class="contact-name">
-                                    {{ singleContact.name }}
-                                </span>
-                                
-                                <span class="contact-last-msg">
-                                    {{ singleContact.messages[(singleContact.messages.length - 1)].message}}
-                                </span>
+                        <div v-for="(singleContact, contactIndex) in contacts" :class="contactIndex === activeContact ? 'active-contact-card' : ''" @click="activeContact = contactIndex">
+                            <div class="contact-card" v-if="singleContact.visible">
+                                <img :src="`img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
+    
+                                <div class="contact-text">
+                                    <span class="contact-name">
+                                        {{ singleContact.name }}
+                                    </span>
+                                    
+                                    <span class="contact-last-msg">
+                                        {{ singleContact.messages[(singleContact.messages.length - 1)].message}}
+                                    </span>
+                                </div>
+    
+                                <div class="contact-last-time">
+                                    {{ singleContact.messages[(singleContact.messages.length - 1)].date.slice(-8)}}
+                                </div>
                             </div>
-
-                            <div class="contact-last-time">
-                                {{ singleContact.messages[(singleContact.messages.length - 1)].date.slice(-8)}}
-                            </div>
+                        </div>
+                        <div v-else class="contact-not-found">
+                            Nessun contatto ha il nome che comincia con {{ searchContact }}
                         </div>
                     </div>
                     <!-- /Sidebar - contact list -->

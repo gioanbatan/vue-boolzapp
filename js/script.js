@@ -4,6 +4,7 @@ const dt = luxon.DateTime;
 createApp({
     data() {
         return {
+            searchContact: "",
             activeContact: 0,
             chatText: "",
             contacts: [
@@ -181,10 +182,11 @@ createApp({
             console.log("Text", this.chatText, typeof(this.chatText), (this.chatText === true ? "true" : "false"));
             if (this.chatText) {
                 // Compose message object with user text and status "sent"
-                newMessage = this.composeMessage(this.chatText, 'sent');
+                const newMessage = this.composeMessage(this.chatText, 'sent');
 
                 console.log("Active", this.activeContact);
                 console.log("CONT", this.contacts[this.activeContact].messages[1].message);
+
                 this.contacts[this.activeContact].messages.push(newMessage);
 
                 this.scrollToBottom();
@@ -206,6 +208,7 @@ createApp({
             return message;
         },
         addNewAnswer() {
+            const activeContactAnswering = this.activeContact;
             const timeAnswer = setTimeout( () => {
                 console.log("voilà");
                 // Answer array
@@ -215,7 +218,7 @@ createApp({
                 // Insert a random text in message
                 const answer = this.composeMessage (textMessage[answerNumber], 'received');
 
-                this.contacts[this.activeContact].messages.push(answer);
+                this.contacts[activeContactAnswering].messages.push(answer);
                 }, 1000);
         },
         generateRndNumber(min, max) {
@@ -226,9 +229,31 @@ createApp({
             return now;
         },
         scrollToBottom() {
-            const element = document.querySelector(".main-chat");
-            console.log("scroll", element);
-            element.scrollIntoView(false);
+            // const element = document.querySelector(".main-chat");
+            // console.log("scroll", element);
+            // element.scrollIntoView(false);
+            // this.$nextTick(() => {
+            //     this.scrolltoEnd();
+            // });
+        },
+        showFoundContacts() {
+            if (this.searchContact) {
+                this.contacts.forEach(element => {
+                    const search = this.searchContact.toLowerCase();
+                    const name = element.name.toLowerCase();
+                    console.log(search, typeof(search));
+                    console.log(name, typeof(name));
+                    if (name.startsWith(search)) {
+                        element.visible = true;
+                    } else {
+                        element.visible = false;
+                    }
+                });
+            } else {
+                this.contacts.forEach(element => {
+                    element.visible = true;
+                })
+            }
         }
     }
 }).mount("#app");

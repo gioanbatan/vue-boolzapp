@@ -185,6 +185,7 @@ input {
 .sidebar-contact-list {
     height: calc(100% - 200px);
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .contact-card {
@@ -208,6 +209,11 @@ input {
 
 .contact-card:hover {
     background-color: var(--col-light-gray);
+}
+
+.contact-not-found {
+    padding: 1rem;
+    color: var(--col-dark-gray);
 }
 
 .contact-card img {
