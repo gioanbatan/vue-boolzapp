@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,7 +103,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-else class="contact-not-found">
+
+                        <div v-if="allHidden" class="contact-not-found">
                             Nessun contatto ha il nome che comincia con {{ searchContact }}
                         </div>
                     </div>
@@ -139,16 +140,16 @@
                     <!-- Main - chat -->
                     <div class="main-chat">
                         <!-- v-for read messages and status type and add dynamic class -->
-                        <div v-for="singleMessage in contacts[activeContact].messages">
-                            <div :class="`chat-${singleMessage.status}-container`" @click="messageOptions">
-                                <div :class="`chat-${singleMessage.status}`">
+                        <div v-for="(singleMessage, indexMessage) in contacts[activeContact].messages">
+                            <div :class="`chat-${singleMessage.status}-container`">
+                                <div :class="`chat-${singleMessage.status}`" @click="messageOptions(indexMessage,singleMessage.status)">
                                     {{ singleMessage.message }}
                                     <span class="message-time">{{singleMessage.date}}</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="message-popup-options">
+                        
+                        <div v-if="popup" class="message-popup-options">
                             <ul>
                                 <li>Prova 1</li>
                                 <li>Prova 2</li>

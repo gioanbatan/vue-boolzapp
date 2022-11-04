@@ -4,6 +4,8 @@ const dt = luxon.DateTime;
 createApp({
     data() {
         return {
+            popup: false,
+            allHidden: false,
             searchContact: "",
             activeContact: 0,
             chatText: "",
@@ -189,14 +191,14 @@ createApp({
 
                 this.contacts[this.activeContact].messages.push(newMessage);
 
-                this.scrollToBottom();
+                // this.scrollToBottom();
                 // Clear user text input
                 this.chatText = "";
                 
                 // Auto answer after one second
                 this.addNewAnswer();
 
-                this.scrollToBottom();
+                // this.scrollToBottom();
             }
         },
         composeMessage(messageText, statusType) {
@@ -237,6 +239,7 @@ createApp({
             // });
         },
         showFoundContacts() {
+            this.allHidden = true;
             if (this.searchContact) {
                 this.contacts.forEach(element => {
                     const search = this.searchContact.toLowerCase();
@@ -245,6 +248,7 @@ createApp({
                     console.log(name, typeof(name));
                     if (name.startsWith(search)) {
                         element.visible = true;
+                        this.allHidden = false;
                     } else {
                         element.visible = false;
                     }
@@ -252,11 +256,23 @@ createApp({
             } else {
                 this.contacts.forEach(element => {
                     element.visible = true;
+                    this.allHidden = false;
                 })
             }
         },
-        messageOptions() {
-            console.log("message clicked");
+        messageOptions(index, status) {
+            console.log("message clicked", index, status);
+            //SE l'utente clicca il messaggio
+                // Viene prelevato l'indice del messaggio cliccato
+                // SE è presente una altro popup lo chiude
+                // Aggiunge il popup all'interndo dell div del messaggio
+                // Il popup contiene le informazioni del messaggio
+                // SE il messagio è status: sent visualizza anche la voce "cancella messaggio"
+                // SE l'utente clicca su una voce il popup si chiude
+                // SE l'utente clicca fuori dal popup, il popup si chiude
+                // SE l'utente clicca sulla voce cancella messaggio viene tolto dall'array messaggi quello con l'indice prelevato
+
+
         }
     }
 }).mount("#app");

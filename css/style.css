@@ -319,6 +319,7 @@ main {
 }
 
 .chat-sent {
+    position: relative;
     min-width: 300px;
     max-width: 60%;
     background-color: var(--col-chat-sent);
@@ -335,6 +336,7 @@ main {
 }
 
 .chat-received {
+    position: relative;
     min-width: 300px;
     max-width: 60%;
     background-color: var(--col-white);
@@ -352,8 +354,28 @@ main {
     color: var(--col-dark-gray);
 }
 
+/* Arrow down at hover */
+.chat-received:hover.chat-received::after,
+.chat-sent:hover.chat-sent::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+
+    display: block;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg) translate(0, -75%);
+    border-bottom: 2px solid var(--col-dark-gray);
+    border-right: 2px solid var(--col-dark-gray);
+}
+
 .message-popup-options {
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
     min-width: 200px;
     min-height: 70px;
     padding: 1rem;
@@ -361,7 +383,7 @@ main {
     background-color: var(--col-white);
     color: var(--col-dark-gray);
     border-radius: 5px;
-    box-shadow: 0 0 3px 3px var(--col-dark-gray);
+    box-shadow: 0 3px 3px 3px var(--col-dark-gray);
 }
 
 .message-popup-options li {
